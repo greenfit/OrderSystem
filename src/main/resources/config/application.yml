@@ -1,0 +1,23 @@
+server: &server
+    address: 172.23.29.119
+    port: 8001
+
+spring:
+    mvc:
+        view:
+            prefix: /html
+            suffix: .html
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/heleeos_blog?useUnicode=true&characterEncoding=utf8
+        username: blog
+        password: blog123
+        driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+    type-aliases-package: com.heleeos.blog.dao.dto
+    #configLocation: classpath:mybatis/mybatis-config.xml
+    mapper-locations: classpath:mybatis/mappers/*Mapper.xml
+    configuration:
+        map-underscore-to-camel-case: true
+        cache-enabled: true
+
