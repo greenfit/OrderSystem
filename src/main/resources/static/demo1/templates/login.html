@@ -1,17 +1,18 @@
-<ion-view title="登录" id="login">
+<ion-view title="登录" id="login" ng-controller="loginCtrl">
   <ion-nav-buttons side="left" class="has-header">
-    <button class="button button-icon icon No Icon">1</button>
+    <button class="button button-icon icon No Icon"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
     <form id="page5-form1" class="list">
       <ion-list id="page5-list8">
         <label class="item item-input" id="page5-input1">
           <span class="input-label">用户名</span>
-          <input type="text" placeholder="">
+          <input type="text" placeholder="请随意输入..." ng-model="userInfo.userName">
         </label>
       </ion-list>
+      {{userInfo}}
       <div class="spacer" style="height: 40px;"></div>
-      <button id="page5-button1"ng-click="show()" style="border-radius:1px 1px 1px 1px;" class="button button-positive button-block button-outline">登录</button>
+      <button id="page5-button1" ng-click="login()" style="border-radius:1px 1px 1px 1px;" class="button button-positive button-block button-outline">登录</button>
     </form>
   </ion-content>
 </ion-view>
