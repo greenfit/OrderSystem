@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heleeos.demo.order.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.heleeos.demo.order.bean.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.heleeos.demo.order.bean.User" useGeneratedKeys="true" keyProperty="id">
+    insert into t_user (name, create_time, update_time)
+    values (#{name,jdbcType=VARCHAR}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  </insert>
+
+</mapper>

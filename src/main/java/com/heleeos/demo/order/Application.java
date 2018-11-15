@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * Created by liyu on 2018/8/20.
  */
 @SpringBootApplication
-//@MapperScan("com.heleeos.demo.order.dao.mapper")
+@MapperScan("com.heleeos.demo.order.mapper")
 public class Application implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

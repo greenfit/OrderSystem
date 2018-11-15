@@ -8,13 +8,13 @@ spring:
             prefix: /html
             suffix: .html
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/heleeos_blog?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://127.0.0.1:3306/Learn?useUnicode=true&characterEncoding=utf8
         username: blog
         password: blog123
         driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
-    type-aliases-package: com.heleeos.blog.dao.dto
+    type-aliases-package: com.heleeos.demo.order.bean
     #configLocation: classpath:mybatis/mybatis-config.xml
     mapper-locations: classpath:mybatis/mappers/*Mapper.xml
     configuration:

@@ -1,7 +1,22 @@
 <ion-view title="购物车" id="cart">
   <ion-content padding="true" class="has-header">
-    <ion-list id="page3-list7">
-      <ion-item id="page3-list-item14">Item</ion-item>
+
+    <div class="card" ng-if="text">
+      <div class="item item-text-wrap">
+        {{text}}
+      </div>
+    </div>
+
+    <ion-list>
+      <ion-item ng-repeat="item in items" class="item-thumbnail-left item-button-right" ng-if="item.count != 0">
+        <img ng-src="/img/items/{{item.index}}.png">
+        <h2>{{item.name}}</h2>
+        <h3>份数: {{item.count}}</h3>
+      </ion-item>
     </ion-list>
+
+    <button class="button button-full button-royal" ng-click="addCart()">
+      确认支付
+    </button>
   </ion-content>
 </ion-view>

@@ -2,7 +2,7 @@
   <ion-content padding="true" class="has-header">
     <ion-list>
       <ion-item ng-repeat="item in items" class="item-thumbnail-left item-button-right">
-        <img ng-src="/img/items/{{$index + 1}}.png">
+        <img ng-src="/img/items/{{item.index}}.png">
         <h2>{{item.name}}</h2>
         <h3>份数: {{item.count}}</h3>
         <div class="button-bar" style="width: 60%">
@@ -16,8 +16,8 @@
       </ion-item>
     </ion-list>
 
-    <button class="button button-full button-royal">
-      添加到购物车
+    <button class="button button-full button-royal" ng-click="addCart()">
+      {{text}}
     </button>
   </ion-content>
 </ion-view>

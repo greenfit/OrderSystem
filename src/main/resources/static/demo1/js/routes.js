@@ -13,8 +13,8 @@ angular.module('app.routes', [])
     .state('cart', {
         url: '/cart',
         templateUrl: 'templates/cart.html',
-        controller: 'cartCtrl'
-
+        controller: 'cartCtrl',
+        cache: false
     })
 
     .state('order', {

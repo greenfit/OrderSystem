@@ -67,7 +67,7 @@
       </ion-header-bar>
       <ion-content ng-controller="side-menuCtrl" padding="false" class="side-menu-left has-header ">
         <div data-componentid="image1">
-          <img src="img/GkXCTrOIR7WMLaQ0Kwbz_Raynor.png" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
+          <img ng-src="/img/heroes/{{userImage}}.png" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
         </div>
         <h3 id="side-menu21-heading1" style="color:#000000;text-align:center;" data-componentid="heading1">Welcome</h3>
         <ion-list id="side-menu21-list2" data-componentid="list2">
@@ -81,7 +81,7 @@
         </ion-list>
         <div class="spacer" style="height: 60px;"></div>
         <ion-list id="side-menu21-list9" data-componentid="list9">
-          <ion-item class="item-icon-left" id="side-menu21-list-item3" ui-sref="login()" menu-close="" data-componentid="list-item3">
+          <ion-item class="item-icon-left" id="side-menu21-list-item3" menu-close="" data-componentid="list-item3" ng-click="logout()">
             <i class="icon ion-android-exit"></i>退出登录</ion-item>
         </ion-list>
       </ion-content>
