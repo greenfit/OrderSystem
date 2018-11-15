@@ -1,20 +1,18 @@
 <ion-view title="我的订单" id="order">
   <ion-content padding="true" class="has-header">
-    <div class="list card" id="page4-card21">
-      <div id="page4-markdown6" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">order Time</p>
+
+    <div class="card" ng-repeat="order in orders">
+      <div class="item item-text-wrap">
+        订单信息:
+        <ion-list>
+          <ion-item ng-repeat="item in order.items track by item.index" class="item-thumbnail-left item-button-right">
+            <img ng-src="/img/items/{{item.index}}.png">
+            <h2>{{item.name}}</h2>
+            <h3>份数: {{item.count}}</h3>
+          </ion-item>
+        </ion-list>
       </div>
-      <ion-item id="page4-list-item19">Item</ion-item>
-      <ion-item id="page4-list-item20">Item</ion-item>
     </div>
-    <div class="list card" id="page4-card22">
-      <div id="page4-markdown7" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">Some friendly
-          <strong>markdown</strong>
-        </p>
-      </div>
-      <ion-item id="page4-list-item21">Item</ion-item>
-      <ion-item id="page4-list-item22">Item</ion-item>
-    </div>
+
   </ion-content>
 </ion-view>

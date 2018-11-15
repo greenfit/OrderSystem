@@ -15,6 +15,10 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
+    public User getUser(String name) throws WebException {
+        return userMapper.getUser(name);
+    }
+
     public User addUser(String userName) throws WebException {
         User user = new User();
         user.setName(userName);

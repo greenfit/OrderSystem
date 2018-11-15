@@ -77,7 +77,12 @@ angular.module('app.controllers', ["ionic"])
     // console.log( $cookies);
 }])
 
-.controller('cartCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+.controller('cartCtrl', ['$scope', '$ionicPopup', '$http', function ($scope, $ionicPopup, $http) {
+    var userId = getCookie("userId");
+    if(userId === undefined) {
+        userId = 0;
+    }
+
     var items = getCookie("cart");
     if(items === null) {
         $scope.items = {};
@@ -86,9 +91,35 @@ angular.module('app.controllers', ["ionic"])
         $scope.items = JSON.parse(items);
         $scope.text = "";
     }
+
+    $scope.addOrder = function() {
+        $http.post('/payOrder', {"userId" : userId, "items" : items}).then(function(response){
+            var result = response.data;
+            if(result.code === 200) {
+               console.log(result);
+            } else {
+                $ionicPopup.alert({ title: '支付失败', template: result.message });
+            }
+        });
+    }
 }])
 
-.controller('orderCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+.controller('orderCtrl', ['$scope', '$ionicPopup', '$http', function ($scope, $ionicPopup, $http) {
+    var userId = getCookie("userId");
+    if(userId === undefined) {
+        userId = 0;
+    }
+
+    $http.get('/getOrder.json?userId=' + userId).then(function(response){
+        var result = response.data;
+        if(result.code === 200) {
+            $scope.orders = result.data;
+        } else {
+            $ionicPopup.alert({ title: '获取订单失败', template: result.message });
+        }
+    });
+
+    $scope.items = {};
 
 }])
 
