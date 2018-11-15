@@ -1,5 +1,8 @@
 package com.heleeos.demo.order.services;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.heleeos.demo.order.bean.Item;
 import com.heleeos.demo.order.bean.Order;
 import com.heleeos.demo.order.bean.User;
 import com.heleeos.demo.order.exception.WebException;
@@ -10,7 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +46,14 @@ public class OrderService {
 
     public List<Order> getOrderList(Integer userId) {
         return orderMapper.getListByUserId(userId).stream().map(order -> {
-            order.setItems(new String(Base64.getDecoder().decode(order.getItems().getBytes())));
+            String str = new String(Base64.getDecoder().decode(order.getItems().getBytes()));
+            List<Item> itemList = new Gson().fromJson(str, new TypeToken<List<Item>>() {}.getType());
+            order.setItemList(itemList);
+
+            Date date = order.getCreateTime();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            order.setTimeStr(dateFormat.format(date));
             return order;
         }).collect(Collectors.toList());
     }

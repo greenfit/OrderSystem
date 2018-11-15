@@ -13,4 +13,8 @@
     values (#{name,jdbcType=VARCHAR}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
 
+  <select id="getUser" resultMap="BaseResultMap">
+    select id,name from t_user where name = #{name}
+  </select>
+
 </mapper>

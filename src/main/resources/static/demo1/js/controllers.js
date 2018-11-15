@@ -21,7 +21,7 @@ angular.module('app.controllers', ["ionic"])
     }
 
     var items = getCookie("cart");
-    if(items === null) {
+    if(items === null ) {
         $scope.items = [{
             "name" : "可口可乐",
             "count" : 0,
@@ -77,7 +77,7 @@ angular.module('app.controllers', ["ionic"])
     // console.log( $cookies);
 }])
 
-.controller('cartCtrl', ['$scope', '$ionicPopup', '$http', function ($scope, $ionicPopup, $http) {
+.controller('cartCtrl', ['$scope', '$ionicPopup', '$http', '$state', function ($scope, $ionicPopup, $http, $state) {
     var userId = getCookie("userId");
     if(userId === undefined) {
         userId = 0;
@@ -96,7 +96,7 @@ angular.module('app.controllers', ["ionic"])
         $http.post('/payOrder', {"userId" : userId, "items" : items}).then(function(response){
             var result = response.data;
             if(result.code === 200) {
-               console.log(result);
+                $state.go("items");
             } else {
                 $ionicPopup.alert({ title: '支付失败', template: result.message });
             }

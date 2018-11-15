@@ -1,6 +1,7 @@
 package com.heleeos.demo.order.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private Integer id;
@@ -10,6 +11,10 @@ public class Order {
     private String items;
 
     private Date createTime;
+
+    private List<Item> itemList;
+
+    private String timeStr;
 
     public Integer getId() {
         return id;
@@ -41,5 +46,21 @@ public class Order {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    public String getTimeStr() {
+        return timeStr;
+    }
+
+    public void setTimeStr(String timeStr) {
+        this.timeStr = timeStr;
     }
 }

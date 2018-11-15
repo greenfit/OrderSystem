@@ -2,15 +2,20 @@
   <ion-content padding="true" class="has-header">
 
     <div class="card" ng-repeat="order in orders">
+      <div class="item item-divider">
+        订单号: {{order.id}}
+      </div>
       <div class="item item-text-wrap">
-        订单信息:
         <ion-list>
-          <ion-item ng-repeat="item in order.items track by item.index" class="item-thumbnail-left item-button-right">
+          <ion-item ng-repeat="item in order.itemList" class="item-thumbnail-left item-button-right" ng-if="item.count != 0">
             <img ng-src="/img/items/{{item.index}}.png">
             <h2>{{item.name}}</h2>
             <h3>份数: {{item.count}}</h3>
           </ion-item>
         </ion-list>
+      </div>
+      <div class="item item-divider">
+        订单时间: {{order.timeStr}}
       </div>
     </div>
 
