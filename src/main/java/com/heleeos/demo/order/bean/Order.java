@@ -6,6 +6,8 @@ import java.util.List;
 public class Order {
     private Integer id;
 
+    private String order;
+
     private Integer userId;
 
     private String items;
@@ -22,6 +24,14 @@ public class Order {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
     }
 
     public Integer getUserId() {
@@ -63,4 +73,5 @@ public class Order {
     public void setTimeStr(String timeStr) {
         this.timeStr = timeStr;
     }
+
 }

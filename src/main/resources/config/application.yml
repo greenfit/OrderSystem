@@ -1,5 +1,5 @@
 server: &server
-    address: 127.0.0.1
+    address: 172.23.29.119
     port: 8001
 
 spring:

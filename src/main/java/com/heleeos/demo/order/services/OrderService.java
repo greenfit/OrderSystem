@@ -32,6 +32,8 @@ public class OrderService {
 
     public Order addOrder(Order order) throws WebException {
         try {
+            String orderStr = String.format("1%d%04d%04d", System.currentTimeMillis() / 1000, order.getUserId(), (int)(Math.random() * 10000));
+            order.setOrder(orderStr);
             order.setItems(new String(Base64.getEncoder().encode(order.getItems().getBytes())));
             int result = orderMapper.insert(order);
             if(result > 0) {
@@ -52,8 +54,8 @@ public class OrderService {
 
             Date date = order.getCreateTime();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
             order.setTimeStr(dateFormat.format(date));
+
             return order;
         }).collect(Collectors.toList());
     }

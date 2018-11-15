@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="com.heleeos.demo.order.bean.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order" jdbcType="VARCHAR" property="order" />
     <result column="items" jdbcType="VARCHAR" property="items" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, items, create_time
+    id, `order`, user_id, items, create_time
   </sql>
 
   <select id="getListByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -16,7 +17,7 @@
   </select>
 
   <insert id="insert" parameterType="com.heleeos.demo.order.bean.Order">
-    insert into t_order (id, user_id, items, create_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{items,jdbcType=VARCHAR}, CURRENT_TIMESTAMP)
+    insert into t_order (id, `order`, user_id, items, create_time)
+    values (#{id,jdbcType=INTEGER}, #{order,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{items,jdbcType=VARCHAR}, CURRENT_TIMESTAMP)
   </insert>
 </mapper>

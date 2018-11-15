@@ -1,0 +1,23 @@
+<ion-view title="浏览商品" id="items"  ng-controller="itemsCtrl">
+  <ion-content padding="true" class="has-header">
+    <ion-list>
+      <ion-item ng-repeat="item in items" class="item-thumbnail-left item-button-right">
+        <img ng-src="/img/items/{{item.index}}.png">
+        <h2>{{item.name}}</h2>
+        <h3>份数: {{item.count}}</h3>
+        <div class="button-bar" style="width: 60%">
+          <button class="button button-small button-positive" ng-click="changeCount(item, 1)">
+            <i class="icon ion-android-add"></i>
+          </button>
+          <button class="button button-small button-energized" ng-click="changeCount(item, -1)">
+            <i class="icon ion-android-remove"></i>
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <button class="button button-full button-royal" ng-click="addCart()">
+      {{text}}
+    </button>
+  </ion-content>
+</ion-view>
